@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>List item name:</strong>
+  <%= @list_item.list_item_name %>
+</p>
+
+<p>
+  <strong>Completed:</strong>
+  <%= @list_item.completed %>
+</p>
+
+<p>
+  <strong>List:</strong>
+  <%= @list_item.list_id %>
+</p>
+
+<%= link_to 'Edit', edit_list_item_path(@list_item) %> |
+<%= link_to 'Back', List.find(@list_item.list_id) %>

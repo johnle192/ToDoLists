@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @user.first_name + ' ' + @user.last_name%>
+</p>
+
+<table>
+  <thead>
+    <% lists = List.where(user_id: @user.id) %>
+    <% if lists.size == 0 %>
+      <em> No lists found </em>
+    <% else %>
+    <tr>
+      <th>List name</th>
+      <th colspan="1"></th>
+    </tr>
+    <% end %>
+  </thead>
+
+  <tbody>
+    <% lists.each do |list| %>
+      <tr>
+        <td><%= link_to list.list_name, list %></td>
+        <td><%= link_to 'Delete', list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'New List', new_list_path %> |
+<%= link_to 'Back', users_path %>
